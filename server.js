@@ -2,9 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-
 const cors = require("cors");
 const morgan = require("morgan");
+const database = require("./database");
 
 const port = process.env.PORT;
 
@@ -18,7 +18,7 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   return res.status(200).json({
     status: true,
-    message: "Petdoor REST API homepage",
+    message: "Petstreet REST API homepage",
   });
 });
 
