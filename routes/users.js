@@ -3,7 +3,7 @@
 const Router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
-const { check, validationResult } = require("express-validator");
+const { check, validationResult, body } = require("express-validator");
 const Jwt = require("jsonwebtoken");
 const moment = require("moment");
 
@@ -24,5 +24,35 @@ Router.get("/", (req, res) => {
     message: "user default route",
   });
 });
+
+//user register route
+//url:http://localhost:3000/user/register
+Router.post(
+  "/register",
+  [
+    //check empty fields
+    check("username").not().isEmpty().trim().escape(),
+    check("password").not().isEmpty().trim().escape(),
+
+    //email validation
+    check("email").isEmail().normalizeEmail(),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+
+    //check errors is not empty
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        status: false,
+        errors: errors.array(),
+      });
+    }
+    return res.status(200).json({
+      status: true,
+      data: req.body,
+    });
+  }
+);
 
 module.exports = Router;
