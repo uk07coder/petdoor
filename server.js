@@ -8,10 +8,14 @@ const database = require("./database");
 
 const port = process.env.PORT;
 
+//user route
+const userRoute = require("./routes/users");
+
 //middleware setup
 
 app.use(cors());
 app.use(morgan("dev"));
+app.use("/user", userRoute);
 
 //route
 

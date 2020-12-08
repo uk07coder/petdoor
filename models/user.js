@@ -21,11 +21,11 @@ const userSchema = new schema({
   },
   createdAt: {
     type: Date,
-    default: moment().format("DD/MM/YYYY") + ";".moment().format("hh:mm:ss"),
+    default: moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
   },
   updatedAt: {
     type: Date,
-    default: moment().format("DD/MM/YYYY") + ";".moment().format("hh:mm:ss"),
+    default: moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
   },
 });
 
