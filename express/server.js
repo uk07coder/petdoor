@@ -13,6 +13,7 @@ const userRoute = require("./routes/users");
 const adminRoute = require("./routes/admin/admin");
 const bodyParser = require("body-parser");
 const { urlencoded } = require("body-parser");
+const categoryRoute = require("./routes/category");
 
 //middleware setup
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/user", userRoute);
 app.use("/admin", adminRoute);
+app.use("/category", categoryRoute);
 
 //route
 /*
