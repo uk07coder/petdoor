@@ -19,7 +19,7 @@ const Header = (props) => {
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       {/*<Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand>*/}
       <Link to="/" className="navbar-brand">
-        Petstreet Admin Dashboard
+        Petstreet
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 

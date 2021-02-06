@@ -1,16 +1,23 @@
 const mongoose = require("mongoose");
 
-const categorySchema = new mongoose.Schema(
+const adSchema = new mongoose.Schema(
   {
-    name: {
+    petType: {
       type: String,
       required: true,
       trim: true,
     },
-    slug: {
+    city: {
       type: String,
       required: true,
-      unique: true,
+    },
+    breed: {
+      type: String,
+      trim: true,
+    },
+    age: {
+      type: String,
+      required: true,
     },
     parentId: {
       type: String,
@@ -19,4 +26,4 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("Ad", adSchema);
