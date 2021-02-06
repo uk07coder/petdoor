@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Row, Col, Container, Form } from "react-bootstrap";
 import Layout from "../../components/Layout/";
 import Input from "../../components/UI/input";
-import { Helmet } from "react-helmet";
 
 /**
 * @author
@@ -14,9 +13,6 @@ const Adpost = (props) => {
   return (
     <Layout>
       &nbsp;
-      <Helmet>
-        <style>{"body { background-color: red; }"}</style>
-      </Helmet>
       <Container style={{ backgroundColor: "darkgrey" }}>
         <h1 style={{ textAlign: "center", color: "black" }}>
           Post Pet For Adoption
