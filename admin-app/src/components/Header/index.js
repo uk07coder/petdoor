@@ -24,30 +24,23 @@ const Header = (props) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Container>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-light">Search</Button>
-          </Form>
-        </Container>
-        <Nav className="mr-auto">
-          {" "}
+        <Nav className="ml-auto">
           {/*<Navbar.Brand href="#LogIn">Login</Navbar.Brand>*/}
           <li className="nav-item" style={{ listStyle: "none" }}>
             <NavLink
               to="/signin"
-              style={{ color: "#fff" }}
+              style={{
+                color: "#fff",
+              }}
               className="nav-link"
             >
               Signin
             </NavLink>
           </li>
-          <li className="nav-item" style={{ listStyle: "none" }}>
+          <li
+            className="nav-item"
+            style={{ listStyle: "none", float: "right " }}
+          >
             <NavLink
               to="/signup"
               style={{ color: "#fff" }}
