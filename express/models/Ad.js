@@ -7,10 +7,6 @@ const adSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    city: {
-      type: String,
-      required: true,
-    },
     breed: {
       type: String,
       trim: true,
@@ -18,6 +14,14 @@ const adSchema = new mongoose.Schema(
     age: {
       type: String,
       required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+
+    petPhoto: {
+      type: String,
     },
     parentId: {
       type: String,

@@ -1,4 +1,4 @@
-import { userConstants } from "../actions/constants";
+import { adConstants } from "../actions/constants";
 const initstate = {
   error: null,
   message: "",
@@ -7,20 +7,20 @@ const initstate = {
 
 export default (state = initstate, action) => {
   switch (action.type) {
-    case userConstants.USER_REGISTER_REQUEST:
+    case adConstants.AD_POST_REQUEST:
       state = {
         ...state,
         loading: true,
       };
       break;
-    case userConstants.USER_REGISTER_SUCCESS:
+    case adConstants.AD_POST_SUCCESS:
       state = {
         ...state,
         loading: false,
         message: action.payload.message,
       };
       break;
-    case userConstants.USER_REGISTER_FAILURE:
+    case adConstants.AD_POST_FAILURE:
       state = {
         ...state,
         loading: false,

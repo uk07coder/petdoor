@@ -1,8 +1,10 @@
-import React from "react";
+import { React, useState } from "react";
 import { Button, Row, Col, Container, Form } from "react-bootstrap";
 import Layout from "../../components/Layout/";
 import Input from "../../components/UI/input";
-
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { adposting } from "../../actions/ad.action";
 /**
 * @author
 * @function Adpost
@@ -10,24 +12,43 @@ import Input from "../../components/UI/input";
 **/
 
 const Adpost = (props) => {
+  const [petType, setPetType] = useState("");
+  const [breed, setBreed] = useState("");
+  const [age, setAge] = useState("");
+  const [city, setCity] = useState("");
+  // const [petPhoto, setPetPhoto] = useState("");
+  const [error, setError] = useState("");
+  const auth = useSelector((state) => state.auth);
+  const adc = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const adPost = (e) => {
+    e.preventDefault();
+    const adcon = { petType, breed, age, city };
+    dispatch(adposting(adcon));
+  };
+
+  if (adc.loading) {
+    <p>loading...</p>;
+  }
+
   return (
     <Layout>
       &nbsp;
-      <Container style={{ backgroundColor: "darkgrey" }}>
+      <Container style={{ backgroundColor: "white", fontSize: "large" }}>
         <h1 style={{ textAlign: "center", color: "black" }}>
           Post Pet For Adoption
         </h1>
         <Row style={{ marginTop: "50px" }}>
           <Col md={{ span: 6, offset: 3 }}>
-            <Form>
+            <Form onSubmit={adPost}>
               <Row>
                 <Col md={6}>
                   <Input
                     Label="Pet Type"
                     placeholder="Pet Type"
                     type="text"
-                    value=""
-                    onChange={() => {}}
+                    value={petType}
+                    onChange={(e) => setPetType(e.target.value)}
                   />
                 </Col>
                 <Col md={6}>
@@ -35,8 +56,8 @@ const Adpost = (props) => {
                     Label="Breed"
                     placeholder="Breed"
                     type="text"
-                    value=""
-                    onChange={() => {}}
+                    value={breed}
+                    onChange={(e) => setBreed(e.target.value)}
                   />
                 </Col>
               </Row>
@@ -44,19 +65,19 @@ const Adpost = (props) => {
                 Label="Age"
                 placeholder="Age"
                 type="text"
-                value=""
-                onChange={() => {}}
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
               />
               <Input
                 Label="City"
                 placeholder="City"
                 type="text"
-                value=""
-                onChange={() => {}}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
-              <Form.Group>
+              {/* <Form.Group>
                 <Form.File id="petphoto" label="Pet Photo" />
-              </Form.Group>
+              </Form.Group> */}
 
               <Button variant="primary" type="submit">
                 Post
