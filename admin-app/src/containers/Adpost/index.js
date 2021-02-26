@@ -16,14 +16,20 @@ const Adpost = (props) => {
   const [breed, setBreed] = useState("");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
-  // const [petPhoto, setPetPhoto] = useState("");
+  const [petPhoto, setPetPhoto] = useState("");
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   const adc = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const adPost = (e) => {
     e.preventDefault();
-    const adcon = { petType, breed, age, city };
+    const adcon = new FormData();
+    adcon.append("petType", petType);
+    adcon.append("breed", breed);
+    adcon.append("age", age);
+    adcon.append("city", city);
+    adcon.append("petPhoto", petPhoto);
+
     dispatch(adposting(adcon));
   };
 
@@ -75,9 +81,14 @@ const Adpost = (props) => {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
-              {/* <Form.Group>
-                <Form.File id="petphoto" label="Pet Photo" />
-              </Form.Group> */}
+              <Form.Group>
+                <Form.File
+                  id="petphoto"
+                  label="Pet Photo"
+                  type="file"
+                  onChange={(e) => setPetPhoto(e.target.files[0])}
+                />
+              </Form.Group>
 
               <Button variant="primary" type="submit">
                 Post

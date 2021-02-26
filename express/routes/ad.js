@@ -2,14 +2,27 @@ const express = require("express");
 const Ad = require("../models/Ad");
 const slugify = require("slugify");
 const router = express.Router();
-
+const fileUpload = require("express-fileUpload");
 router.post("/create", (req, res) => {
+  console.log(req.body);
+  console.log(req.files);
+  let pp = req.files.petPhoto;
+
   const adobj = {
     petType: req.body.petType,
     city: req.body.city,
     breed: req.body.breed,
     age: req.body.age,
+    petPhoto: pp.name,
   };
+
+  pp.mv(__dirname + "/img/" + pp.name, function (err) {
+    if (err) {
+      return res.status(400).json({ status: "Image not uploaded" });
+    } else {
+      //return res.status(200).json({ status: "file uploaded successfully" });
+    }
+  });
 
   if (req.body.parentId) {
     adobj.parentId = req.body.parentId;

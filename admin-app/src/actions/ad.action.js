@@ -2,10 +2,11 @@ import { adConstants } from "./constants";
 import axiosInstance from "../helpers/axios";
 
 export const adposting = (adcon) => {
+  console.log(adcon);
   return async (dispatch) => {
     dispatch({ type: adConstants.AD_POST_REQUEST });
-    const res = await axiosInstance.post("/ad/create", {
-      ...adcon,
+    const res = await axiosInstance.post("/ad/create", adcon, {
+      headers: { "content-type": "multipart/form-data" },
     });
 
     if (res.status === 200) {

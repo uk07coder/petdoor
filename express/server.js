@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const database = require("./database");
-
+const fileUpload = require("express-fileUpload");
 const port = process.env.PORT;
 
 //user route
@@ -16,7 +16,8 @@ const { urlencoded } = require("body-parser");
 const adRoute = require("./routes/ad");
 
 //middleware setup
-
+app.use(fileUpload());
+//app.use(express.static("./img/petphoto"));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
