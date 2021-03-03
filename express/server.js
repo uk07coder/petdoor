@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const database = require("./database");
 const fileUpload = require("express-fileUpload");
+const Ad = require("./models/Ad");
 const port = process.env.PORT;
 
 //user route
@@ -25,16 +26,18 @@ app.use(bodyParser.json());
 app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 app.use("/ad", adRoute);
-
+app.use(express.static("express/routes/img"));
 //route
-/*
+
 app.get("/", (req, res) => {
-  return res.status(200).json({
-    status: true,
-    message: "Petstreet REST API homepage",
+  let posts = Ad.find({}, function (err, posts) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(posts);
+    }
   });
 });
-*/
 
 //start server
 
