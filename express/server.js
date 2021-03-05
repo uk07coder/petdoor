@@ -3,10 +3,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+
 const morgan = require("morgan");
 const database = require("./database");
 const fileUpload = require("express-fileUpload");
 const Ad = require("./models/Ad");
+
 const port = process.env.PORT;
 
 //user route
@@ -26,9 +28,9 @@ app.use(bodyParser.json());
 app.use("/user", userRoute);
 app.use("/admin", adminRoute);
 app.use("/ad", adRoute);
-app.use(express.static("express/routes/img"));
-//route
+app.use(express.static(__dirname + "/routes/img"));
 
+//route
 app.get("/", (req, res) => {
   let posts = Ad.find({}, function (err, posts) {
     if (err) {

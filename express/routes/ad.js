@@ -1,8 +1,9 @@
 const express = require("express");
 const Ad = require("../models/Ad");
-const slugify = require("slugify");
 const router = express.Router();
 const fileUpload = require("express-fileUpload");
+const Path = require("path");
+
 router.post("/create", (req, res) => {
   console.log(req.body);
   console.log(req.files);

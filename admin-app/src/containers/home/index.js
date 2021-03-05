@@ -41,14 +41,17 @@ const Home = (props) => {
             <Button variant="primary" href="/create">
               Post
             </Button>
-            {/* {usedata.map((val) => {
-              <AdCard
-                petPhoto={usedata[val].petPhoto}
-                petType={usedata[val].petType}
-              />;
-            })} */}
-
-            <AdCard petPhoto={usedata[0].petPhoto} />
+            {usedata.map((val) => {
+              return (
+                <AdCard
+                  petPhoto={val.petPhoto}
+                  petType={val.petType}
+                  breed={val.breed}
+                  age={val.age}
+                  city={val.city}
+                />
+              );
+            })}
           </div>
           <p>
             It is a long established fact that a reader will be distracted by
