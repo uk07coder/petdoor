@@ -4,7 +4,6 @@ import Layout from "../../components/Layout";
 import { Jumbotron, Container, Form, Row, Col, Button } from "react-bootstrap";
 import Input from "../../components/UI/input";
 import { useSelector, useDispatch } from "react-redux";
-import "./index.css";
 import { signup } from "../../actions/user.actions";
 /**
 * @author
@@ -37,7 +36,10 @@ const Signup = (props) => {
 
   return (
     <Layout>
-      <Jumbotron className="inner">
+      <Jumbotron
+        className="inner"
+        style={{ background: "#fff", borderRadius: "50px" }}
+      >
         <h2
           style={{
             textAlign: "center",
@@ -88,6 +90,9 @@ const Signup = (props) => {
                   />
 
                   <Button
+                    onClick={() => {
+                      alert("User Creadted");
+                    }}
                     className="btn  btn-lg btn-block"
                     variant="primary"
                     type="submit"
@@ -95,7 +100,7 @@ const Signup = (props) => {
                     Register
                   </Button>
                   <p className="forgot-password text-right">
-                    Already registered <a href="#">log in?</a>
+                    Already registered <a href="/signin">log in?</a>
                   </p>
                 </Form>
               </Col>

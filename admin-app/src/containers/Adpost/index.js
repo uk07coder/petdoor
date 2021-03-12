@@ -40,7 +40,15 @@ const Adpost = (props) => {
   return (
     <Layout>
       &nbsp;
-      <Container style={{ backgroundColor: "white", fontSize: "large" }}>
+      <Container
+        style={{
+          backgroundColor: "white",
+          fontSize: "large",
+          paddingBottom: "30px",
+          paddingTop: "30px",
+          borderRadius: "30px",
+        }}
+      >
         <h1 style={{ textAlign: "center", color: "black" }}>
           Post Pet For Adoption
         </h1>
@@ -90,7 +98,14 @@ const Adpost = (props) => {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              <Button
+                className="btn  btn-lg btn-block"
+                onClick={() => {
+                  alert("Ad Posted");
+                }}
+                variant="primary"
+                type="submit"
+              >
                 Post
               </Button>
             </Form>

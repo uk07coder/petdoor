@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Jumbotron, Card } from "react-bootstrap";
+import { Button, Jumbotron, Card, CardGroup, CardDeck } from "react-bootstrap";
 import Layout from "../../components/Layout/";
 import AdCard from "../../components/AdCard/index";
 import axios from "../../helpers/axios";
@@ -32,6 +32,7 @@ const Home = (props) => {
         {console.log(usedata)}
 
         <Jumbotron
+          id="jum"
           style={{ margin: "5rem", background: "#fff" }}
           className="text-center"
         >
@@ -41,17 +42,21 @@ const Home = (props) => {
             <Button variant="primary" href="/create">
               Post
             </Button>
-            {usedata.map((val) => {
-              return (
-                <AdCard
-                  petPhoto={val.petPhoto}
-                  petType={val.petType}
-                  breed={val.breed}
-                  age={val.age}
-                  city={val.city}
-                />
-              );
-            })}
+            <div className="mx-auto">
+              <CardDeck id="cd" style={{}}>
+                {usedata.map((val) => {
+                  return (
+                    <AdCard
+                      petPhoto={val.petPhoto}
+                      petType={val.petType}
+                      breed={val.breed}
+                      age={val.age}
+                      city={val.city}
+                    />
+                  );
+                })}
+              </CardDeck>
+            </div>
           </div>
           <p>
             It is a long established fact that a reader will be distracted by

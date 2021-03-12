@@ -24,43 +24,38 @@ const Header = (props) => {
   };
   const renderLoggedInLinks = () => {
     return (
-      <Nav className="ml-auto">
-        <li className="nav-item" style={{ listStyle: "none" }}>
-          <NavLink
-            to="/signin"
-            onClick={logout}
-            style={{
-              color: "#fff",
-            }}
-            className="nav-link"
-          >
-            Signout
-          </NavLink>
-        </li>
+      <Nav>
+        <NavLink
+          to="/signin"
+          onClick={logout}
+          style={{
+            color: "#fff",
+          }}
+          className="nav-link"
+        >
+          Signout
+        </NavLink>
       </Nav>
     );
   };
 
   const renderNonLoggedInLinks = () => {
     return (
-      <Nav className="ml-auto" style={{}}>
-        {/*<Navbar.Brand href="#LogIn">Login</Navbar.Brand>*/}
-        <li className="nav-item" style={{ listStyle: "none" }}>
-          <NavLink
-            to="/signin"
-            style={{
-              color: "#fff",
-            }}
-            className="nav-link"
-          >
-            Signin
-          </NavLink>
-        </li>
-        <li className="nav-item" style={{ listStyle: "none", float: "right " }}>
-          <NavLink to="/signup" style={{ color: "#fff" }} className="nav-link">
-            Signup
-          </NavLink>
-        </li>
+      <Nav>
+        {/*<NavbarrBrand href="#LogIn">Login</Navbar.Brand>*/}
+        <NavLink
+          to="/signin"
+          style={{
+            color: "#fff",
+          }}
+          className="nav-link"
+        >
+          Signin
+        </NavLink>
+
+        <NavLink to="/signup" style={{ color: "#fff" }} className="nav-link">
+          Signup
+        </NavLink>
       </Nav>
     );
   };
@@ -72,8 +67,10 @@ const Header = (props) => {
         Petstreet
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      {auth.authenticate ? renderLoggedInLinks() : renderNonLoggedInLinks()}
-      <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto"></Nav>
+        {auth.authenticate ? renderLoggedInLinks() : renderNonLoggedInLinks()}
+      </Navbar.Collapse>
     </Navbar>
   );
 };

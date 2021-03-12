@@ -61,3 +61,19 @@ html,
 .custom-control-label {
   font-weight: 400;
 }
+
+#jum {
+  border-radius: 50px;
+}
+
+#cd {
+  margin-top: 30px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 0.5rem;
+}
+
+#n1 {
+  content: black;
+}
